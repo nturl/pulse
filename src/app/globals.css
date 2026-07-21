@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-serif: var(--font-instrument);
+}
+
+body {
+  background: radial-gradient(80% 420px at 50% 0%, rgba(12, 74, 110, 0.35), transparent) fixed #020617;
+}
