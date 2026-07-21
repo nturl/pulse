@@ -9,7 +9,7 @@ async function expectedCookie(): Promise<string> {
   return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   if (PUBLIC.some((re) => re.test(pathname))) return NextResponse.next();
   if (req.cookies.get("pulse")?.value === (await expectedCookie())) return NextResponse.next();

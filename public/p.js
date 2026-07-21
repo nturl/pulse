@@ -22,5 +22,11 @@
     push.apply(this, arguments);
     send();
   };
+  // SPA routers that navigate via replaceState went untracked
+  const replace = history.replaceState;
+  history.replaceState = function () {
+    replace.apply(this, arguments);
+    send();
+  };
   addEventListener("popstate", send);
 })();
