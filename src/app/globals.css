@@ -8,3 +8,37 @@
 body {
   background: radial-gradient(80% 420px at 50% 0%, rgba(12, 74, 110, 0.35), transparent) fixed #020617;
 }
+
+@keyframes sheet-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-sheet-up {
+  animation: sheet-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Tactile press for buttons and chips. */
+.pressable {
+  transition: transform 0.15s ease;
+}
+.pressable:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-sheet-up {
+    animation: none;
+  }
+  .pressable,
+  .pressable:active {
+    transition: none;
+    transform: none;
+  }
+}

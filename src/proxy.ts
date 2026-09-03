@@ -1,7 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Everything is private except the tracker, the ingest endpoint, and login.
-const PUBLIC = [/^\/api\/t$/, /^\/p\.js$/, /^\/login$/, /^\/api\/login$/];
+// Everything is private except the tracker, the ingest endpoint, login, and
+// the PWA plumbing (manifest, service worker, icons) — those must be
+// reachable unauthenticated or they 302 to /login instead of installing.
+const PUBLIC = [
+  /^\/api\/t$/,
+  /^\/p\.js$/,
+  /^\/login$/,
+  /^\/api\/login$/,
+  /^\/manifest\.webmanifest$/,
+  /^\/sw\.js$/,
+  /^\/icon(\.\w+)?$/,
+  /^\/apple-icon(\.\w+)?$/,
+  /^\/icons\//,
+];
 
 async function expectedCookie(): Promise<string> {
   const data = new TextEncoder().encode(`${process.env.PULSE_PASS}|pulse-cookie`);

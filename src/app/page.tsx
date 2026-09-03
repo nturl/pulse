@@ -1,6 +1,7 @@
 import { SITES } from "@/lib/sites";
 import { getSiteAgg, type SiteAgg } from "@/lib/store";
 import { Sparkline, type DayPoint } from "@/components/Sparkline";
+import { GetAppButton } from "@/components/GetAppButton";
 
 export const dynamic = "force-dynamic";
 
@@ -97,7 +98,10 @@ export default async function Dashboard() {
           <h1 className="font-serif text-5xl tracking-tight">Pulse</h1>
           <p className="mt-1.5 text-sm text-slate-400">Noel&rsquo;s sites at a glance. Folds every 3 minutes.</p>
         </div>
-        <span className="text-xs text-slate-500">{SITES.length} site{SITES.length === 1 ? "" : "s"}</span>
+        <div className="flex shrink-0 items-center gap-3">
+          <GetAppButton />
+          <span className="text-xs text-slate-500">{SITES.length} site{SITES.length === 1 ? "" : "s"}</span>
+        </div>
       </header>
 
       <div className="space-y-10">
